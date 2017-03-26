@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: marvel-heroes_development
+
+test:
+  <<: *default
+  database: marvel-heroes_test
+
+production:
+  <<: *default
+  database: marvel-heroes
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

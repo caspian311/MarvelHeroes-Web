@@ -15,9 +15,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'nokogiri', '~> 1.6.8'
 gem 'haml-rails', '~> 0.9.0'
 
+gem 'faraday', '~> 0.11.0'
+
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -8,3 +8,12 @@
 //= require @angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js
 
 //= require_tree .
+
+(function(app) {
+  document.addEventListener('DOMContentLoaded', function() {
+    ng.platformBrowserDynamic
+      .platformBrowserDynamic()
+      .bootstrapModule(app.LoginModule);
+  });
+})(window.app || (window.app = {}));
+

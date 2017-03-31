@@ -2,7 +2,7 @@
   app.LoginComponent =
     ng.core.Component({
       selector: 'login',
-      templateUrl: 'heroes.html'
+      templateUrl: '/templates/session/login.html'
     })
     .Class({
       constructor: function() {

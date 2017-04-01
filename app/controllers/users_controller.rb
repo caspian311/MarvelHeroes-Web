@@ -6,9 +6,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create! user_params
-
-    redirect_to :home_path
+    begin
+      User.create! user_params
+      render json: { redirect_to: home_index_path }
+    rescue
+      render json: { error: 'Email is not available' }, status: 400
+    end
   end
 
   private

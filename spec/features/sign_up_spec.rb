@@ -11,6 +11,8 @@ describe 'sign up', js: true do
     fill_in 'email', with: 'matt.todd@hat.dog'
     fill_in 'password', with: 'password'
 
+    wait_for_ajax
+
     click_button 'Sign Up'
   end
 end

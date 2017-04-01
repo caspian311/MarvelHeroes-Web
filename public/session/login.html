@@ -1,0 +1,16 @@
+<h1>Sign In</h1>
+
+<h4 class="error" *ngIf="errorMessage">{{errorMessage}}</h4>
+
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <label for="email">Email</label>
+  <input type="text" name="email" ngModel required />
+
+  <label for="password">Password</label>
+  <input type="password" name="password" ngModel />
+  
+  <button>Login</button>
+</form>
+
+
+<a href=''>New User?'</a>

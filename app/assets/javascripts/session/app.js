@@ -6,6 +6,8 @@
 //= require @angular/compiler/bundles/compiler.umd.js
 //= require @angular/platform-browser/bundles/platform-browser.umd.js
 //= require @angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js
+//= require @angular/forms/bundles/forms.umd.js
+//= require @angular/http/bundles/http.umd.js
 
 //= require_tree .
 
@@ -15,5 +17,6 @@
       .platformBrowserDynamic()
       .bootstrapModule(app.LoginModule);
   });
+
 })(window.app || (window.app = {}));
 

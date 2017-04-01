@@ -7,10 +7,9 @@ class SessionController < ApplicationController
   def create
     if good_login
       session[:email] = user_params[:email]
-      redirect_to home_index_path
+      render json: { redirect_url: home_index_path }
     else
-      flash[:login] = 'Invalid credentials'
-      redirect_to new_session_path 
+      render json: { error: 'Invalid credentials' }, status: 401
     end
   end
 
@@ -21,6 +20,6 @@ class SessionController < ApplicationController
   end
 
   def user_params
-    params.permit :email, :password
+    params[:session].permit :email, :password
   end
 end

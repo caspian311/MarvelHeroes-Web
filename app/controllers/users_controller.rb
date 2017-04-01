@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  skip_filter :authenticate
+  skip_before_action :authenticate
 
   def new
-    @user = User.new
   end
 
   def create
     begin
       User.create! user_params
+      session[:email] = user_params[:email]
       render json: { redirect_to: home_index_path }
     rescue
       render json: { error: 'Email is not available' }, status: 400

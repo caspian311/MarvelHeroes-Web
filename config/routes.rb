@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :session, only: [:new, :create, :destroy]
   get 'templates/*template', to: 'templates#show'
+  get 'foo', to: 'foo#index'
 
   namespace :api do
     resources :characters

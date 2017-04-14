@@ -1,0 +1,104 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+$black: #000
+$dark_grey: #333
+$white: #FFF
+$light_red: #F90000
+$medium_red: #880000
+$dark_red: #6B0000
+$light_red: #822D2D
+
+body
+  padding: 0
+  margin: 0
+  font-family: sans-serif
+
+.header
+  color: $white
+  height: 3em
+  padding: 1em 1em 1em 1em
+  background: linear-gradient(to bottom, $light_red 0%, $medium_red 50%, $medium_red 51%, $dark_red 100%)
+
+  h1
+    font-size: 28pt
+    font-weight: 600
+    display: inline
+    margin: 0em 0em .25em 0em
+
+  a
+    color: $white
+    font-weight: 400
+    text-decoration: none
+
+  ul.links
+    float: right
+
+    li
+      list-style-type: none
+      display: inline
+      margin: 0em 1em 0em 1em
+
+
+.body
+  padding: 1em
+  font-size: 12pt
+
+  a
+    color: $dark_red
+    text-decoration: none
+    font-weight: 800
+
+.column1
+  width: 100%
+
+.column2
+  width: 50%
+  float: left
+
+.column3
+  width: 33%
+  float: left
+
+.box
+  border: solid 1px $dark_grey
+  padding: 0 1em 1em 1em
+  margin: 1em
+  box-shadow: 0 1em 1em rgba(0, 0, 0, 0.15), 0 0.5em 0.5em rgba(0, 0, 0, 0.2)
+  border-radius: 0.25em
+
+  h4
+    color: $dark_grey
+    padding: 0.5em 1em 0.5em 1em
+    margin: 0.5em -1em 0 -1em
+    border-bottom: 1px solid $dark_grey
+
+.footer
+  clear: both
+  background: $dark_red
+  color: $white
+  height: 3em
+
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+
+  ul
+    text-align: right
+
+  li
+    display: inline
+    list-style-type: none
+    margin: 1em 1em 1em 1em
+
+    a
+      font-size: 12pt
+      font-weight: 400
+      color: $white
+      text-decoration: none
+
+.error 
+  color: red

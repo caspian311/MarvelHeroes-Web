@@ -2,14 +2,15 @@ class SessionController < ApplicationController
   skip_before_action :authenticate
 
   def new
+    @user = User.new
   end
 
   def create
     if good_login
       session[:email] = user_params[:email]
-      render json: { redirect_url: home_index_path }
+      redirect_to home_index_path
     else
-      render json: { error: 'Invalid credentials' }, status: 401
+      redirect_to new_session_path, flash: { error: 'Invalid credentials' }
     end
   end
 
@@ -23,3 +24,4 @@ class SessionController < ApplicationController
     params[:session].permit :email, :password
   end
 end
+

@@ -1,5 +1,15 @@
-%login{ "token" => form_authenticity_token }
+.column1.sign_up
+  .box
+    %h4 Log In
 
-= link_to 'New User?', new_user_path
+    %p.error
+      = flash[:error]
 
-= javascript_include_tag 'session/app'
+    = form_for :session, url: { action: :create } do |f|
+      = f.text_field :email, placeholder: 'Email'
+      = f.text_field :password, placeholder: 'Password'
+      = f.submit 'Sign Up'
+
+  = link_to 'New User?', new_user_path
+
+= javascript_include_tag 'users/app'

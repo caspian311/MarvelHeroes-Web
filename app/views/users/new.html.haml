@@ -1,5 +1,16 @@
-%signup{ token: form_authenticity_token }
+.column1.sign_up
+  .box
+    %h4 New User Sign Up
 
-= link_to 'Already have an account?', new_session_path
+    %p.error
+      = flash[:error]
+
+    = form_for @user do |f|
+      = f.text_field :name, placeholder: 'Name'
+      = f.text_field :email, placeholder: 'Email'
+      = f.text_field :password, placeholder: 'Password'
+      = f.submit 'Sign Up'
+
+  = link_to 'Already have an account?', new_session_path
 
 = javascript_include_tag 'users/app'

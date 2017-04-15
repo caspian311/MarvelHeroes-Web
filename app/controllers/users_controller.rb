@@ -6,13 +6,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    begin
-      User.create! user_params
-      session[:email] = user_params[:email]
-      redirect_to home_index_path
-    rescue
-      redirect_to new_user_path, flash: { error: 'Something went wrong' }
-    end
+    User.create! user_params
+    session[:email] = user_params[:email]
+    redirect_to home_index_path
+  rescue
+    redirect_to new_user_path, flash: { error: 'Something went wrong' }
   end
 
   private

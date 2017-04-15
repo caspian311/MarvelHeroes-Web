@@ -14,6 +14,11 @@ class SessionController < ApplicationController
     end
   end
 
+  def destroy
+    session[:email] = nil
+    redirect_to new_session_path
+  end
+
   private
 
   def good_login

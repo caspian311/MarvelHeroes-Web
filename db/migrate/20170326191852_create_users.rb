@@ -5,9 +5,11 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :email, null: false
       t.string :password, null: false
     end
+
+    add_index :users, :email, unique: true
   end
 
   def down
-    drop_table  :users
+    drop_table :users
   end
 end

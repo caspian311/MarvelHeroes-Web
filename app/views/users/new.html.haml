@@ -11,6 +11,6 @@
       = f.text_field :password, placeholder: 'Password'
       = f.submit 'Sign Up'
 
-  = link_to 'Already have an account?', new_session_path
+    = link_to 'Already have an account?', new_session_path, {class: 'right'}
 
 = javascript_include_tag 'users/app'

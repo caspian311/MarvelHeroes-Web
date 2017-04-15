@@ -10,6 +10,6 @@
       = f.text_field :password, placeholder: 'Password'
       = f.submit 'Sign In'
 
-  = link_to 'New user?', new_user_path
+    = link_to 'New user?', new_user_path, {class: 'right'}
 
 = javascript_include_tag 'users/app'

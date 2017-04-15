@@ -21,6 +21,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'webmock'
@@ -28,6 +29,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara-webkit'
   gem 'launchy'
+  gem 'faker'
 end
 
 

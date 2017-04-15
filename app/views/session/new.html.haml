@@ -1,6 +1,6 @@
 .column1.sign_up
   .box
-    %h4 Log In
+    %h4 Sign In
 
     %p.error
       = flash[:error]
@@ -8,8 +8,8 @@
     = form_for :session, url: { action: :create } do |f|
       = f.text_field :email, placeholder: 'Email'
       = f.text_field :password, placeholder: 'Password'
-      = f.submit 'Sign Up'
+      = f.submit 'Sign In'
 
-  = link_to 'New User?', new_user_path
+  = link_to 'New user?', new_user_path
 
 = javascript_include_tag 'users/app'

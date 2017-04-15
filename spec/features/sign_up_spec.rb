@@ -1,18 +1,21 @@
 describe 'sign up', js: true do
-  it 'redirects to the sign up page' do
-    visit '/home'
+  context 'user does not exist yet' do
+    let(:email){ 'mt123@hat.dog' }
+    let(:password){ 'pass123' }
 
-    expect(page).to have_content('Sign In')
+    it 'sign up to see token' do
+      visit '/'
 
-    click_link 'New User?'
+      click_link 'New user?'
 
-    expect(page).to have_content('Sign Up')
+      expect(page).to have_content('Sign Up')
 
-    fill_in 'email', with: 'matt.todd@hat.dog'
-    fill_in 'password', with: 'password'
+      fill_in 'user_email', with: email
+      fill_in 'user_password', with: password
 
-    wait_for_ajax
+      click_button 'Sign Up'
 
-    click_button 'Sign Up'
+      expect(page).to have_content('Main')
+    end
   end
-end
+end if false

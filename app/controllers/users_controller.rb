@@ -2,21 +2,22 @@ class UsersController < ApplicationController
   skip_before_action :authenticate
 
   def new
+    @user = User.new
   end
 
   def create
     begin
       User.create! user_params
       session[:email] = user_params[:email]
-      render json: { redirect_to: home_index_path }
+      redirect_to home_index_path
     rescue
-      render json: { error: 'Email is not available' }, status: 400
+      redirect_to new_user_path, flash: { error: 'Something went wrong' }
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit :email, :password
+    params.require(:user).permit :name, :email, :password
   end
 end

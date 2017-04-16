@@ -1,8 +1,30 @@
 .column1.sign_up
   .box
-    %h4 Home
+    %h4 Welcome!
 
     %p
-      Api Key:
-      = @api_key
+      Below is your API key. Use with great care. I will be watching how you abuse my site. Those are my terms and conditions.
 
+    %p
+      %strong
+        Api Key:
+      %span.code
+        = @api_key
+
+    %p Usage:
+    
+    %code
+      :preserve
+        GET /api/characters HTTP/1.1
+        Host: marvel-web-api.todd.net
+        Content-Type: application/json
+        Authorization: Token token=#{@api_key}
+
+    %p curl:
+    
+    %code
+      :preserve
+        $ curl \
+          -H 'Content-Type: application/json' \
+          -H 'Authorization: Token token=#{@api_key}' \
+          https://marvel-web-api.todd.net/api/characters/1009368

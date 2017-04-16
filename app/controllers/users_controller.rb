@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create! user_params
+    create_user
     session[:email] = user_params[:email]
     redirect_to home_index_path
   rescue
@@ -17,5 +17,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password
+  end
+
+  def create_user
+    User.create_with_api_key! user_params
   end
 end

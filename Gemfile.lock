@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.1.4)
+    awesome_print (1.6.1)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.12.1)
@@ -224,6 +225,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print (~> 1.6.1)
   byebug
   capybara
   capybara-webkit

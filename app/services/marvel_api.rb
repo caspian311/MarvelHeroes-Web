@@ -1,5 +1,5 @@
 class MarvelApi
-  MARVEL_ENDPOINT = 'https://gateway.marvel.com/v1/public'
+  MARVEL_ENDPOINT = 'https://gateway.marvel.com/v1/public'.freeze
 
   attr_reader :current_timestamp
 
@@ -8,28 +8,23 @@ class MarvelApi
   end
 
   def get_all_characters
-    characters_url = "#{MARVEL_ENDPOINT}/characters"
-
-    resp = Faraday.new(url: characters_url).get do |req|
-      req.params['apikey'] = public_key
-      req.params['ts'] = current_timestamp
-      req.params['hash'] = hash
-    end
-    resp.body
+    make_call "#{MARVEL_ENDPOINT}/characters"
   end
 
   def get_character(character_id)
-    character_url = "#{MARVEL_ENDPOINT}/characters/#{character_id}"
+    make_call "#{MARVEL_ENDPOINT}/characters/#{character_id}"
+  end
 
-    resp = Faraday.new(url: character_url).get do |req|
+  private
+
+  def make_call(url)
+    resp = Faraday.new(url: url).get do |req|
       req.params['apikey'] = public_key
       req.params['ts'] = current_timestamp
       req.params['hash'] = hash
     end
     resp.body
   end
-
-  private
 
   def hash
     digest = Digest::MD5.new

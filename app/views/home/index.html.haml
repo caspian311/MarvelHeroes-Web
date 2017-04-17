@@ -15,8 +15,8 @@
     
     %code
       :preserve
-        GET /api/characters HTTP/1.1
-        Host: marvel-web-api.todd.net
+        GET #{api_character_path('1009368')} HTTP/1.1
+        Host: #{request.host}
         Content-Type: application/json
         Authorization: Token token=#{@api_key}
 
@@ -27,4 +27,4 @@
         $ curl \
           -H 'Content-Type: application/json' \
           -H 'Authorization: Token token=#{@api_key}' \
-          https://marvel-web-api.todd.net/api/characters/1009368
+          #{api_character_url('1009368')}

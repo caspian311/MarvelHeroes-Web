@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'awesome_print', '~> 1.6.1'
+gem 'bcrypt', '~> 3.1.10'
 gem 'faraday', '~> 0.11.0'
 gem 'haml-rails', '~> 0.9.0'
 gem 'jbuilder', '~> 2.5'

@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     create_user
     session[:email] = user_params[:email]
     redirect_to home_index_path
-  rescue
-    redirect_to new_user_path, flash: { error: 'Something went wrong' }
+  rescue StandardError => e
+    redirect_to new_user_path, flash: { error: e.message }
   end
 
   private

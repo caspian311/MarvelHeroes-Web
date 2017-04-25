@@ -20,6 +20,6 @@ class UsersController < ApplicationController
   end
 
   def create_user
-    User.create_with_api_key! user_params
+    User.create! user_params
   end
 end

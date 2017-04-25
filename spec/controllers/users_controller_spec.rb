@@ -26,10 +26,6 @@ describe UsersController do
       it 'redirects to the home page' do
         expect(response).to redirect_to home_index_path
       end
-
-      it 'creates an API key for the new user' do
-        expect(User.last.api_key).to be_present
-      end
     end
 
     context 'email is not unique' do

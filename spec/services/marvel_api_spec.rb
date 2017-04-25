@@ -3,6 +3,16 @@ describe MarvelApi do
   let(:expected_body) { "{ \"message\": \"#{message}\" }" }
   let(:public_key) { Rails.application.secrets.marvel_api_public_key }
 
+  shared_context 'server response with an error' do
+    before do
+      stub_request(:get, /gateway.marvel.com/).to_return(status: status_code)
+    end
+
+    it 'raises an error' do
+      expect { action }.to raise_error(RuntimeError, /#{status_code}/)
+    end
+  end
+
   describe '#get_all_characters' do
     before do
       stub_request(:get, 'https://gateway.marvel.com/v1/public/characters')
@@ -16,6 +26,11 @@ describe MarvelApi do
       characters = subject.get_all_characters
 
       expect(characters).to eq(expected_body)
+    end
+
+    it_behaves_like 'server response with an error' do
+      let(:action) { subject.get_all_characters }
+      let(:status_code) { 500 }
     end
   end
 
@@ -34,6 +49,11 @@ describe MarvelApi do
       character = subject.get_character character_id
 
       expect(character).to eq(expected_body)
+    end
+
+    it_behaves_like 'server response with an error' do
+      let(:action) { subject.get_character(character_id) }
+      let(:status_code) { 500 }
     end
   end
 end

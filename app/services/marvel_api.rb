@@ -23,6 +23,7 @@ class MarvelApi
       req.params['ts'] = current_timestamp
       req.params['hash'] = hash
     end
+    raise "Error: #{resp.status}" unless resp.success?
     resp.body
   end
 

@@ -6,8 +6,8 @@ class SessionController < ApplicationController
   end
 
   def create
-    if good_login
-      session[:email] = email_param[:email]
+    if valid_credentails?
+      session[:email] = email
       redirect_to home_index_path
     else
       redirect_to new_session_path, flash: { error: 'Invalid credentials' }
@@ -21,15 +21,15 @@ class SessionController < ApplicationController
 
   private
 
-  def good_login
-    User.find_by(email_param).try(:authenticate, password_param[:password])
+  def valid_credentails?
+    User.find_by_email(email).try(:authenticate, password)
   end
 
-  def email_param
-    params[:session].permit :email
+  def email
+    params[:session][:email]
   end
 
-  def password_param
-    params[:session].permit :password
+  def password
+    params[:session][:password]
   end
 end

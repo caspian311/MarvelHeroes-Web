@@ -1,0 +1,15 @@
+.column1.sign_up
+  .box
+    %h4 New API Access
+
+    %p
+      It appears that you do not have access to the API. Please provide your public and private keys from the Marvel API to get an API key here that you can use to access our API.
+
+    %p.error
+      = flash[:error]
+
+    = form_for @api_access do |f|
+      = f.text_field :public_key, placeholder: 'Public Key'
+      = f.text_field :private_key, placeholder: 'Private Key'
+      = f.submit 'Create API Key'
+

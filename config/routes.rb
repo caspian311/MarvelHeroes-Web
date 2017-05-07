@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :home, only: [:index]
 
-  resources :users, only: [:new, :create]
-  resources :session, only: [:new, :create, :destroy]
+  resources :users, only: %i[new create]
+
+  resources :api_accesses, only: %i[new create]
+
+  resources :session, only: %i[new create destroy]
   get 'sessions/destroy', to: 'session#destroy'
 
   get 'templates/*template', to: 'templates#show'

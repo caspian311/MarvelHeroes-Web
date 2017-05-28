@@ -1,24 +1,15 @@
-# README
+# Marvel Heroes Web
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+So this project was born out of the fact that it is really hard to create an MD5 hash in iOS. Which seems stupid but I like throwing together little projects like this.
 
-Things you may want to cover:
+So the long and short of it is this: the Marvel API requires a handful of query parameters syntehsized from your public and private keys that are tied to your account and the synthesis requires creating an MD5 hash which is hard in iOS. So this web app acts like a proxy between the Marvel API and your application so you can register with your public/private key and this will generate a simple token to that you can put in your applicaiton.
 
-* Ruby version
+### Marvel API
 
-* System dependencies
+    curl ...
 
-* Configuration
+### Proxied API
 
-* Database creation
+    curl ...
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It's that simple. Enjoy!

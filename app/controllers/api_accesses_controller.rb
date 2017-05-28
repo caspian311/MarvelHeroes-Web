@@ -1,4 +1,6 @@
 class ApiAccessesController < ApplicationController
+  before_action :redirect_if_already_have_key, only: :new
+
   def new
     @api_access = ApiAccess.new
   end
@@ -8,6 +10,11 @@ class ApiAccessesController < ApplicationController
     redirect_to home_index_path
   rescue
     redirect_to new_api_access_path, flash: { error: 'Both public and private keys are required to create an API key' }
+  end
+
+  def destroy
+    ApiAccess.destroy(current_user.api_access.id) if current_user.api_access.present?
+    redirect_to new_api_access_path
   end
 
   private
@@ -30,5 +37,9 @@ class ApiAccessesController < ApplicationController
 
   def private_key
     api_access.require :private_key
+  end
+
+  def redirect_if_already_have_key
+    redirect_to home_index_path if current_user.api_access.present?
   end
 end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
 
-  resources :api_accesses, only: %i[new create]
+  resources :api_accesses, only: %i[new create destroy]
 
   resources :session, only: %i[new create destroy]
   get 'sessions/destroy', to: 'session#destroy'

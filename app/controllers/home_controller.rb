@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @api_key = current_user.api_key
+    @api_access_id = current_user.api_access.id
   end
 
   private

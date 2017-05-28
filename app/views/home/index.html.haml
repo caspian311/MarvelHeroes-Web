@@ -10,6 +10,10 @@
         Api Key:
       %span.code#api_key
         = @api_key
+      %span
+        (
+        = link_to 'reset', api_access_path(@api_access_id), method: 'delete' 
+        )
 
     %p Usage:
     

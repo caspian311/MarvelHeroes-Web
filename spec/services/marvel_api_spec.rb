@@ -1,7 +1,10 @@
 describe MarvelApi do
   let(:message) { 'expecated payload' }
   let(:expected_body) { "{ \"message\": \"#{message}\" }" }
-  let(:public_key) { Rails.application.secrets.marvel_api_public_key }
+  let(:public_key) { 'publickey' }
+  let(:private_key) { 'privatekey' }
+
+  subject { described_class.new public_key, private_key }
 
   shared_context 'server response with an error' do
     before do
@@ -19,7 +22,7 @@ describe MarvelApi do
         .with(query: hash_including(
           apikey: public_key
         ))
-        .to_return(status: 200, body: expected_body, headers: {})
+        .to_return(status: 200, body: expected_body)
     end
 
     it 'makes outside calls' do
@@ -40,7 +43,7 @@ describe MarvelApi do
     before do
       stub_request(:get, "https://gateway.marvel.com/v1/public/characters/#{character_id}")
         .with(query: hash_including(
-          apikey: Rails.application.secrets.marvel_api_public_key
+          apikey: public_key
         ))
         .to_return(status: 200, body: expected_body, headers: {})
     end

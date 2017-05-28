@@ -3,8 +3,15 @@ describe 'Full Run', js: true do
     let(:name) { 'Test User' }
     let(:email) { 'mt123@hat.dog' }
     let(:password) { 'pass123' }
-    let(:public_key) { 'public key' }
-    let(:private_key) { 'private key' }
+    let(:public_key) { 'ABC123' }
+    let(:private_key) { '0987654321' }
+    let(:api_contents) { File.read('spec/fixtures/hero.json') }
+
+    before do
+      stub_request(:get, 'https://gateway.marvel.com/v1/public/characters/1009368')
+        .with(query: hash_including('apikey' => public_key))
+        .to_return(status: 200, body: api_contents)
+    end
 
     it 'should be able to generate a usable api key' do
       visit '/'
@@ -37,12 +44,12 @@ describe 'Full Run', js: true do
       api_key = find('#api_key').text
 
       Capybara.current_session.driver.header 'Authorization', 'Token token=foo'
-      visit api_characters_path
+      visit api_character_path('1009368')
 
       expect(status_code).to eq(401)
 
       Capybara.current_session.driver.header 'Authorization', "Token token=#{api_key}"
-      visit api_characters_path
+      visit api_character_path('1009368')
 
       expect(status_code).to eq(200)
     end

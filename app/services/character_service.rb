@@ -1,17 +1,21 @@
 class CharacterService
+  attr_reader :user
+
+  def initialize(user)
+    @user = user
+  end
+
   def all_characters
+    JSON.parse(marvel_api.get_all_characters)
   end
 
   def fetch(character_id)
-    Character.find_or_create_by!(character_id: character_id) do |character|
-      body = JSON.parse(marvel_api.get_character character_id)
-      character.update_attributes body: body
-    end.body
+    JSON.parse(marvel_api.get_character(character_id))
   end
 
   private
 
   def marvel_api
-    MarvelApi.new
+    MarvelApi.new user.api_access.public_key, user.api_access.private_key
   end
 end

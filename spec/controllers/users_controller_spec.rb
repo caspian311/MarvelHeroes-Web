@@ -16,7 +16,7 @@ describe UsersController do
       let(:pass) { 'user pass' }
 
       before do
-        get :create, params: { user: { name: name, email: email, password: pass } }
+        post :create, params: { user: { name: name, email: email, password: pass } }
       end
 
       it 'creates a new user' do
@@ -36,7 +36,7 @@ describe UsersController do
       before do
         create :user, name: name, email: email, password: pass
 
-        get :create, params: { user: { name: name, email: email, password: pass } }
+        post :create, params: { user: { name: name, email: email, password: pass } }
       end
 
       it 'does not create a new user' do

@@ -1,7 +1,7 @@
 describe Api::CharactersController do
-  let!(:character1) { create :character }
-  let!(:character2) { create :character }
-  let!(:character3) { create :character }
+  let!(:character1) { 'Iron Man' }
+  let!(:character2) { 'Wolverine' }
+  let!(:character3) { 'Magneto' }
   let!(:characters) { [character1, character2, character3] }
   let(:auth) { "Token token=#{api_key}" }
 

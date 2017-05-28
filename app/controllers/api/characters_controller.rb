@@ -1,11 +1,17 @@
 module Api
   class CharactersController < Api::ApiBaseController
     def index
-      render json: CharacterService.new.all_characters
+      render json: character_service.all_characters
     end
 
     def show
-      render json: CharacterService.new.fetch(params[:id])
+      render json: character_service.fetch(params[:id])
+    end
+
+    private
+
+    def character_service
+      CharacterService.new current_user
     end
   end
 end
